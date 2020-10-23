@@ -43,7 +43,7 @@ jobs:
     -
       name: Push aliases
       uses: docker/build-push-action@v2
-      if: matrix.os == 'debian'
+      if: matrix.os == 'alpine'
       with:
         context: .
         file: ./${{ matrix.versions }}/${{ matrix.type }}/${{ matrix.os }}/Dockerfile
