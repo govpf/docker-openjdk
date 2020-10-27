@@ -16,6 +16,8 @@ jobs:
         versions: [8]
         type: [jdk, jre]
         os: [alpine, debian]
+    env:
+      repo: "govpf/openjdk"
     steps:
     -
       name: Checkout
@@ -39,7 +41,7 @@ jobs:
         pull: true
         push: true
         tags: |
-          govpf/openjdk:${{ matrix.versions }}-${{ matrix.type }}-${{ matrix.os }}
+          ${{ env.repo }}:${{ matrix.versions }}-${{ matrix.type }}-${{ matrix.os }}
     -
       name: Push aliases
       uses: docker/build-push-action@v2
@@ -51,10 +53,10 @@ jobs:
         pull: true
         push: true
         tags: |
-          govpf/openjdk:${{ matrix.versions }}-${{ matrix.type }}
+          ${{ env.repo }}:${{ matrix.versions }}-${{ matrix.type }}
     - name: Update repo description
       uses: peter-evans/dockerhub-description@v2
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-        repository: govpf/debian
+        repository: "${{ env.repo }}"
