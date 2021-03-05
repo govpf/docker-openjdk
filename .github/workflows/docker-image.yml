@@ -61,12 +61,12 @@ jobs:
       if: matrix.os == 'alpine'
       with:
         context: .
-        file: ./${{ matrix.versions }}/${{ matrix.type }}/${{ matrix.os }}/Dockerfile
+        file: ./8/${{ matrix.type }}/${{ matrix.os }}/Dockerfile
         platforms: linux/amd64
         pull: true
         push: true
         tags: |
-          ${{ env.repo }}:${{ matrix.versions }}-${{ matrix.type }}
+          ${{ env.repo }}:8-${{ matrix.type }}
     - name: Update repo description
       uses: peter-evans/dockerhub-description@v2
       with:
