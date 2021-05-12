@@ -33,7 +33,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
     -
       name: Build and push debian
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v2.4.0
       if: matrix.os == 'debian'
       with:
         context: .
@@ -45,7 +45,7 @@ jobs:
           ${{ env.repo }}:${{ matrix.versions }}-${{ matrix.type }}-${{ matrix.os }}
     -
       name: Build and push version 8 (alpine only)
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v2.4.0
       if: matrix.os == 'alpine'
       with:
         context: .
@@ -57,7 +57,7 @@ jobs:
           ${{ env.repo }}:8-${{ matrix.type }}-${{ matrix.os }}
     -
       name: Push aliases
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v2.4.0
       if: matrix.os == 'alpine'
       with:
         context: .
