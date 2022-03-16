@@ -33,4 +33,4 @@ RUN apk add --no-cache $MUSL_LOCALE_DEPS \
     && cd .. && rm -r musl-locales-master
 
 COPY install_certs /tmp/install_certs
-RUN sh /tmp/install_certs
+RUN bash -xe /tmp/install_certs
