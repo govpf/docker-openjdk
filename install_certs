@@ -26,10 +26,16 @@ do
     # Adds an eol char at the end of the file if not already present
     sed -i -e '$a\' "$cert_path"
 
-    keytool -keystore cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias "${cert_file%.*}" -file "$cert_path"
+    keytool -keystore cacerts -storetype jks -storepass changeit -noprompt -trustcacerts -importcert -alias "${cert_file%.*}" -file "$cert_path"
 done
 
 update-ca-certificates
+
+if test -f "$JAVA_HOME/lib/security/cacerts"; then
+  keytool -importkeystore -srckeystore $JAVA_HOME/lib/security/cacerts -srcstorepass changeit -deststoretype jks -destkeystore /cacerts -deststoretype jks -deststorepass changeit -noprompt
+else
+  keytool -importkeystore -srckeystore $JAVA_HOME/jre/lib/security/cacerts -srcstorepass changeit -deststoretype jks -destkeystore /cacerts -deststoretype jks -deststorepass changeit -noprompt
+fi
 
 BIN_JCE="https://bin.gov.pf/artifactory/public/jce"
 for policy_jar in $(find / -name "local_policy.jar" -exec ls {} \;)
