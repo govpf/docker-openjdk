@@ -31,7 +31,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Build and push debian
-      uses: docker/build-push-action@v2.10.0
+      uses: docker/build-push-action@v3.1.0
       with:
         context: .
         file: ./${{ matrix.versions }}/${{ matrix.type }}/${{ matrix.os }}/Dockerfile
@@ -55,7 +55,7 @@ jobs:
         sarif_file: 'trivy-results.${{ matrix.versions }}-${{ matrix.type }}-${{ matrix.os }}.sarif'
 
     - name: Push aliases
-      uses: docker/build-push-action@v2.10.0
+      uses: docker/build-push-action@v3.1.0
       if: matrix.os == 'alpine'
       with:
         context: .
