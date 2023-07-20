@@ -27,12 +27,15 @@ RUN MUSL_LOCALE_DEV_DEPS="cmake make musl-dev gcc gettext-dev" \
     && cd musl-locales-master \
     && cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && make && make install \
     && cd .. && rm -r musl-locales-master \
+    && apk add tzdata
     && apk del ${MUSL_LOCALE_DEV_DEPS}
 
 ENV TZ Pacific/Tahiti
 ENV LANG fr_FR:UTF-8
 ENV LANGUAGE fr
 ENV LC_ALL fr_FR.UTF-8
+
+RUN apk add tzdata
 
 COPY install_certs /tmp/install_certs
 RUN bash -xe /tmp/install_certs
