@@ -34,5 +34,7 @@ ENV LANG fr_FR:UTF-8
 ENV LANGUAGE fr
 ENV LC_ALL fr_FR.UTF-8
 
+RUN apk add tzdata
+
 COPY install_certs /tmp/install_certs
 RUN bash -xe /tmp/install_certs
