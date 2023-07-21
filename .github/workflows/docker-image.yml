@@ -41,19 +41,6 @@ jobs:
         tags: |
           ${{ env.repo }}:${{ matrix.versions }}-${{ matrix.type }}-${{ matrix.os }}
 
-    - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: ${{ env.repo }}:${{ matrix.versions }}-${{ matrix.type }}-${{ matrix.os }}
-        format: 'sarif'
-        output: 'trivy-results.${{ matrix.versions }}-${{ matrix.type }}-${{ matrix.os }}.sarif'
-
-    - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v2
-      if: always()
-      with:
-        sarif_file: 'trivy-results.${{ matrix.versions }}-${{ matrix.type }}-${{ matrix.os }}.sarif'
-
     - name: Push aliases
       uses: docker/build-push-action@v4.0.0
       if: matrix.os == 'alpine'
