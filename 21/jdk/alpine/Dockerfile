@@ -1,6 +1,6 @@
 FROM eclipse-temurin:21-alpine
 
-RUN apk add -U --no-cache curl bash
+RUN apk add -U --no-cache curl bash && apk upgrade --no-cache
 
 ENV TZ Pacific/Tahiti
 ENV LANG fr_FR:UTF-8
