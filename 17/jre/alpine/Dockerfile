@@ -1,6 +1,6 @@
 FROM openjdk:17-alpine
 
-ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
+ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl
 
 RUN MUSL_LOCALE_DEV_DEPS="cmake make musl-dev gcc gettext-dev" \
     && MUSL_LOCALE_DEPS="gettext libintl" \
@@ -29,10 +29,10 @@ RUN MUSL_LOCALE_DEV_DEPS="cmake make musl-dev gcc gettext-dev" \
     && cd .. && rm -r musl-locales-master \
     && apk del ${MUSL_LOCALE_DEV_DEPS}
 
-ENV TZ Pacific/Tahiti
-ENV LANG fr_FR:UTF-8
-ENV LANGUAGE fr
-ENV LC_ALL fr_FR.UTF-8
+ENV TZ=Pacific/Tahiti
+ENV LANG=fr_FR:UTF-8
+ENV LANGUAGE=fr
+ENV LC_ALL=fr_FR.UTF-8
 
 RUN apk add tzdata
 

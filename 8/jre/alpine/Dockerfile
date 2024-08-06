@@ -7,14 +7,14 @@ RUN apk add --no-cache ca-certificates curl tzdata wget \
     && echo "$TZ" > /etc/timezone
 
 # Locale
-ENV LANG fr_FR:UTF-8
-ENV LANGUAGE fr
-ENV LC_CTYPE fr_FR.utf8
-ENV LC_MESSAGES fr_FR.utf8
-ENV LC_ALL fr_FR.utf8
+ENV LANG=fr_FR:UTF-8
+ENV LANGUAGE=fr
+ENV LC_CTYPE=fr_FR.utf8
+ENV LC_MESSAGES=fr_FR.utf8
+ENV LC_ALL=fr_FR.utf8
 
-ENV MUSL_LOCALE_DEPS cmake make musl-dev gcc gettext-dev libintl
-ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
+ENV MUSL_LOCALE_DEPS="cmake make musl-dev gcc gettext-dev libintl"
+ENV MUSL_LOCPATH="/usr/share/i18n/locales/musl"
 RUN apk add --no-cache $MUSL_LOCALE_DEPS \
     && wget https://github.com/govpf/musl-locales/archive/master.zip \
     && unzip master.zip \
