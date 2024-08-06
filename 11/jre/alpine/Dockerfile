@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine-jre
+FROM eclipse-temurin:11-jre-alpine
 
 ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl
 
