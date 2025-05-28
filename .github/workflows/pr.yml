@@ -21,7 +21,7 @@ jobs:
       uses: docker/setup-buildx-action@v3.10.0
 
     - name: Build and push debian
-      uses: docker/build-push-action@v6.15.0
+      uses: docker/build-push-action@v6.18.0
       with:
         context: .
         file: ./${{ matrix.versions }}/${{ matrix.type }}/${{ matrix.os }}/Dockerfile
