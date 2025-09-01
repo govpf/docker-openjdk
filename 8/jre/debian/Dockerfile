@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-buster
+FROM openjdk:8-jre-slim
 
 COPY install_certs /tmp/install_certs
 RUN sh /tmp/install_certs
