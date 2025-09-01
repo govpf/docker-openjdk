@@ -1,4 +1,4 @@
-FROM openjdk:11-jre-buster
+FROM openjdk:11-jre-slim
 
 ENV TZ=Pacific/Tahiti
 
