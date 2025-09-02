@@ -1,9 +1,15 @@
-FROM openjdk:8-jre-slim
+FROM openjdk:8-jre-buster
 
 COPY install_certs /tmp/install_certs
 RUN sh /tmp/install_certs
 
 ENV TZ=Pacific/Tahiti
+
+# Installer curl, ca-certificates, et éventuellement keytool dépendances
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends locales \
     && sed -i -e 's/# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen \
