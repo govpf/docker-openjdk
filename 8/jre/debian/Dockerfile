@@ -5,6 +5,9 @@ RUN sh /tmp/install_certs
 
 ENV TZ=Pacific/Tahiti
 
+# Fix sources.list car buster est EOL
+RUN sed -i 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
+    && sed -i '/security.debian.org/d' /etc/apt/sources.list
 # Installer curl, ca-certificates, et éventuellement keytool dépendances
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
