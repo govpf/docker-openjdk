@@ -20,6 +20,7 @@ mkdir -p /certificates
 for cert_url in $CERT_URLS
 do
     cert_file="$(basename "$cert_url")"
+    cert_file="${cert_file%.pem}.crt"
     cert_path="/certificates/$cert_file"
 
     curl "$cert_url" -o "$cert_path"
@@ -27,4 +28,10 @@ do
     # Badly formatted certs break the entire file in alpine
     # Adds an eol char at the end of the file if not already present
     sed -i -e '$a\' "$cert_path"
+
+    # 2nd part, install cert in ca-certificates
+    cp /certificates/$cert_file /usr/local/share/ca-certificates/$cert_file
+
 done
+
+update-ca-certificates
