@@ -32,7 +32,7 @@ do
     # 2nd part, install cert in ca-certificates
     cp /certificates/$cert_file /usr/local/share/ca-certificates/$cert_file
 
-    keytool -import -trustcacerts -storepass changeit -noprompt -file $cert_file -alias api-privee-self-signed  -keystore $JAVA_HOME/lib/security/cacerts
+    keytool -import -trustcacerts -storepass changeit -noprompt -file $cert_file -alias "${cert_file%.*}" -keystore $JAVA_HOME/lib/security/cacerts
 done
 
 update-ca-certificates
