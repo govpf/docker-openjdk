@@ -33,7 +33,7 @@ do
     # 2nd part, install cert in ca-certificates
     cp /certificates/$cert_file /usr/local/share/ca-certificates/$cert_file
     keytool -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias "${cert_file%.*}" -file "/usr/local/share/ca-certificates/$cert_file"
-    keytool -keystore /cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias "${cert_file%.*}" -file "/usr/local/share/ca-certificates/$cert_file"
+    keytool -keystore cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias "${cert_file%.*}" -file "/usr/local/share/ca-certificates/$cert_file"
 done
 
 update-ca-certificates
