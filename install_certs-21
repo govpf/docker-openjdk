@@ -13,6 +13,7 @@ CERT_URLS="$CA_ARTIFACTORY_URL/cadsi-prod.pem \
     $CA_CERTIGNA_URL/wildca.der \
     $CA_CERTIGNA_URL/certigna.der \
     $CA_CERTIGNA_URL/servicesca.crt \
+    $CA_CERTIGNA_URL/servicesca_rootca.crt \
     $CA_ARTIFACTORY_URL/Bundle_certificat_certigna.crt \
     $CA_ARTIFACTORY_URL/CertignaServerAuthenticationOVCPCAG1.crt"
 
