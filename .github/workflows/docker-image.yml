@@ -10,9 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false # Continue other jobs if one fails
       matrix:
-        #versions: [8, 11, 17, 21]
-        versions: [21]
+        versions: [8, 11, 17, 21]
         type: [jdk, jre]
         os: [alpine, debian]
     env:

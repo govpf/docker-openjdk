@@ -9,7 +9,7 @@ CERT_URLS="$CA_ARTIFACTORY_URL/cadsi-prod.pem \
     $CA_CERTINOMIS_URL/AC_2017_web.pem.cer \
     $CA_CERTINOMIS_URL/AC_CERTINOMIS_SSL.cer \
     $CA_CERTINOMIS_URL/AC_AGENTS.cer \
-    $CA_CERTIGNA_URL/certignarootca.crt \
+    $CA_CERTIGNA_URL/certignarootca.der \
     $CA_CERTIGNA_URL/wildca.der \
     $CA_CERTIGNA_URL/certigna.der \
     $CA_CERTIGNA_URL/servicesca.crt \
