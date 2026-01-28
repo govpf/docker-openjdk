@@ -42,17 +42,17 @@ jobs:
         tags: |
           ${{ env.repo }}:${{ matrix.versions }}-${{ matrix.type }}-${{ matrix.os }}
 
-    - name: Push aliases
-      uses: docker/build-push-action@v6.15.0
-      if: matrix.os == 'alpine'
-      with:
-        context: .
-        file: ./8/${{ matrix.type }}/${{ matrix.os }}/Dockerfile
-        platforms: linux/amd64
-        pull: true
-        push: true
-        tags: |
-          ${{ env.repo }}:8-${{ matrix.type }}
+    # - name: Push aliases
+    #   uses: docker/build-push-action@v6.15.0
+    #   if: matrix.os == 'alpine'
+    #   with:
+    #     context: .
+    #     file: ./8/${{ matrix.type }}/${{ matrix.os }}/Dockerfile
+    #     platforms: linux/amd64
+    #     pull: true
+    #     push: true
+    #     tags: |
+    #       ${{ env.repo }}:8-${{ matrix.type }}
 
     - name: Update repo description
       uses: peter-evans/dockerhub-description@v4.0.0
