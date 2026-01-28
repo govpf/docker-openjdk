@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        versions: [8, 11, 17, 21]
+        #versions: [8, 11, 17, 21]
+        versions: [21]
         type: [jdk, jre]
         os: [alpine, debian]
     env:
