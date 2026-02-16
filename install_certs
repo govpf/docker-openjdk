@@ -39,13 +39,13 @@ else
   keytool -importkeystore -srckeystore $JAVA_HOME/jre/lib/security/cacerts -srcstorepass changeit -deststoretype jks -destkeystore /cacerts -deststoretype jks -deststorepass changeit -noprompt
 fi
 
-BIN_JCE="https://bin.gov.pf/artifactory/public/jce"
+GITHUB_JCE="https://raw.githubusercontent.com/govpf/govpf-public/main/jce"
 for policy_jar in $(find / -name "local_policy.jar" -exec ls {} \;)
 do
-    curl "$BIN_JCE/local_policy.jar" > "$policy_jar"
+    curl "$GITHUB_JCE/local_policy.jar" > "$policy_jar"
 done
 
 for policy_jar in $(find / -name "US_export_policy.jar" -exec ls {} \;)
 do
-    curl "$BIN_JCE/US_export_policy.jar" > "$policy_jar"
+    curl "$GITHUB_JCE/US_export_policy.jar" > "$policy_jar"
 done
