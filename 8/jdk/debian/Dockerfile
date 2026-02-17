@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-buster
+FROM eclipse-temurin:8-jdk-jammy
 
 COPY install_certs /tmp/install_certs
 RUN sh /tmp/install_certs

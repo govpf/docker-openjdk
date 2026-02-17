@@ -25,7 +25,7 @@ RUN MUSL_LOCALE_DEV_DEPS="cmake make musl-dev gcc gettext-dev" \
     && unzip master.zip \
     && rm master.zip \
     && cd musl-locales-master \
-    && cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && make && make install \
+    && cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DLOCALE_PROFILE=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr . && make && make install \
     && cd .. && rm -r musl-locales-master \
     && apk del ${MUSL_LOCALE_DEV_DEPS}
 

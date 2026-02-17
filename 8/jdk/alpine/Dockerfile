@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM eclipse-temurin:8-jdk-alpine
 
 # Timezone
 ENV TZ Pacific/Tahiti
@@ -19,7 +19,7 @@ RUN apk add --no-cache $MUSL_LOCALE_DEPS \
     && wget https://github.com/govpf/musl-locales/archive/master.zip \
     && unzip master.zip \
     && cd musl-locales-master \
-    && cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && make && make install \
+    && cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DLOCALE_PROFILE=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr . && make && make install \
     && cd .. && rm -r musl-locales-master
 
 # Certs
