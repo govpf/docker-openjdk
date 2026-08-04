@@ -1,5 +1,8 @@
 FROM eclipse-temurin:11-jre-alpine
 
+LABEL govpf.category="runtime"
+LABEL govpf.fromimage="eclipse-temurin:11-jre-alpine"
+
 ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl
 
 RUN MUSL_LOCALE_DEV_DEPS="cmake make musl-dev gcc gettext-dev" \
