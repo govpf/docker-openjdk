@@ -1,5 +1,8 @@
 FROM eclipse-temurin:26-jre
 
+LABEL govpf.category="runtime"
+LABEL govpf.fromimage="eclipse-temurin:26-jre"
+
 RUN apt-get update && apt-get install -y --no-install-recommends locales curl \
     && sed -i -e 's/# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \

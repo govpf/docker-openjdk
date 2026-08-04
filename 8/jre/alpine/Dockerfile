@@ -1,5 +1,7 @@
 FROM eclipse-temurin:8-jre-alpine
 
+LABEL govpf.category="runtime"
+LABEL govpf.fromimage="eclipse-temurin:8-jre-alpine"
 # Timezone
 ENV TZ Pacific/Tahiti
 RUN apk add --no-cache ca-certificates curl tzdata wget \

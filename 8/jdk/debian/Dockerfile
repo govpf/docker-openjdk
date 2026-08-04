@@ -1,5 +1,8 @@
 FROM eclipse-temurin:8-jdk-jammy
 
+LABEL govpf.category="runtime"
+LABEL govpf.fromimage="eclipse-temurin:8-jdk-alpine"
+
 COPY install_certs /tmp/install_certs
 RUN sh /tmp/install_certs
 

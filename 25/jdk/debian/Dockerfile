@@ -1,5 +1,8 @@
 FROM eclipse-temurin:25
 
+LABEL govpf.category="runtime"
+LABEL govpf.fromimage="eclipse-temurin:25"
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \
     curl \

@@ -1,5 +1,8 @@
 FROM eclipse-temurin:11-jdk-jammy
 
+LABEL govpf.category="runtime"
+LABEL govpf.fromimage="eclipse-temurin:11-jdk-jammy"
+
 ENV TZ=Pacific/Tahiti
 
 RUN apt-get update && apt-get install -y --no-install-recommends locales curl \

@@ -1,5 +1,8 @@
 FROM eclipse-temurin:21-jre-alpine
 
+LABEL govpf.category="runtime"
+LABEL govpf.fromimage="eclipse-temurin:21-jre-alpine"
+
 RUN apk add -U --no-cache curl bash && apk upgrade --no-cache
 
 ENV TZ=Pacific/Tahiti
