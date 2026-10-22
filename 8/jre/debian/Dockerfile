@@ -25,6 +25,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends locales \
     && dpkg-reconfigure -f noninteractive tzdata \
     && rm -rf /var/lib/apt/lists/*
 
+# CVE-2026-91403 : blocage des CA intermédiaires eMudhra compromises
+COPY emudhra-blocked.certs /tmp/emudhra-blocked.certs
+RUN set -e \
+ && f=$(find "$JAVA_HOME" -name blocked.certs -o -name blacklisted.certs | head -n1) \
+ && test -n "$f" \
+ && echo >> "$f" \
+ && cat /tmp/emudhra-blocked.certs >> "$f" \
+ && grep -q 42C4ACCD12C4F59597925E1A08A7A90102608543809308D50EC427E118BA1493 "$f" \
+ && rm /tmp/emudhra-blocked.certs
+
 ENV LANG=fr_FR:UTF-8
 ENV LANGUAGE=fr
 ENV LC_ALL=fr_FR.utf8
