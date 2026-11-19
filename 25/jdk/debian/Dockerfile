@@ -3,7 +3,8 @@ FROM eclipse-temurin:25
 LABEL govpf.category="runtime"
 LABEL govpf.fromimage="eclipse-temurin:25"
 
-ENV JAVA_TOOL_OPTIONS="-XX:-UseBASE64Intrinsics" # CVE-2026-114938
+# CVE-2026-114938
+ENV JAVA_TOOL_OPTIONS="-XX:-UseBASE64Intrinsics"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \

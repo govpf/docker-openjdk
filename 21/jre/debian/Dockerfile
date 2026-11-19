@@ -3,7 +3,8 @@ FROM eclipse-temurin:21-jre
 LABEL govpf.category="runtime"
 LABEL govpf.fromimage="eclipse-temurin:21-jre"
 
-ENV JAVA_TOOL_OPTIONS="-XX:-UseBASE64Intrinsics" # CVE-2026-114938
+# CVE-2026-114938
+ENV JAVA_TOOL_OPTIONS="-XX:-UseBASE64Intrinsics"
 
 RUN apt-get update && apt-get install -y --no-install-recommends locales curl \
     && sed -i -e 's/# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen \
