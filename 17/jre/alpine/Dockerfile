@@ -4,6 +4,7 @@ LABEL govpf.category="runtime"
 LABEL govpf.fromimage="eclipse-temurin:17-jre-alpine"
 
 ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl
+ENV JAVA_TOOL_OPTIONS="-XX:-UseBASE64Intrinsics" # CVE-2026-114938
 
 RUN MUSL_LOCALE_DEV_DEPS="cmake make musl-dev gcc gettext-dev" \
     && MUSL_LOCALE_DEPS="gettext libintl" \
