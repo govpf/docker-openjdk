@@ -3,8 +3,6 @@ FROM eclipse-temurin:25-alpine
 LABEL govpf.category="runtime"
 LABEL govpf.fromimage="eclipse-temurin:25-alpine"
 
-# CVE-2026-114938
-ENV JAVA_TOOL_OPTIONS="-XX:-UseBASE64Intrinsics"
 
 RUN apk add -U --no-cache curl bash && apk upgrade --no-cache
 

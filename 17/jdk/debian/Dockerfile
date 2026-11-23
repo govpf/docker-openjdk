@@ -4,8 +4,6 @@ LABEL govpf.category="runtime"
 LABEL govpf.fromimage="eclipse-temurin:17-jdk-jammy"
 
 ENV TZ=Pacific/Tahiti
-# CVE-2026-114938
-ENV JAVA_TOOL_OPTIONS="-XX:-UseBASE64Intrinsics"
 
 
 RUN apt-get update && apt-get install -y --no-install-recommends locales curl \
